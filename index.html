@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Booleans</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <header>
+
+            <h1>Jeu de pierre Papier Ciseaux</h1>
+            <h2>A vous de jouer !</h2>
+
+        </header>
+
+        <main>
+
+            <button
+            onclick="
+        choix = 'Pierre';
+        conditions()
+        "
+        
+        >Pierre</button>
+        <button
+        
+        onclick="
+        choix = 'Papier';
+        conditions()
+        
+        "
+        >Papier</button>
+        <button
+        
+        onclick="
+        choix = 'Ciseaux';
+        conditions()
+        
+        "
+        >Ciseaux</button><br>
+        <button
+        onclick="
+        reset()
+        "
+        >Reset</button>
+        <span></span>
+        </main>
+        
+    <script src="script.js" defer></script>
+</body>
+</html>

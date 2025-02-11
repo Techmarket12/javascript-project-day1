@@ -1,0 +1,10 @@
+body {
+background-color: #181818;
+max-width: 1200px;
+color: white;
+margin: 0 auto;
+text-align: center;
+display: flex;
+flex-direction: column;
+}
+
