@@ -1,13 +1,15 @@
+
+const score = JSON.parse(localStorage.getItem('score'))
+
+        document.querySelector('span').innerHTML = `score : ${score.win} looses : ${score.looses}`
+
 let choix = "";
 let choixDuBot = "";
-let score = 0;
-let looses = 0;
-let chances;
 
 const array1 = ["Pierre" , "Papier", "Ciseaux"]
 
 function nombreRandom() {
-    let randomNumber = Math.floor(Math.random() * 3);
+    let randomNumber = Math.floor(Math.random()* 3);
     return randomNumber
 
 }
@@ -19,12 +21,14 @@ function choixRandom () {
     return choixRandomm
 }
 function reset() {
-    choix = "";
-choixDuBot = "";
-score = 0;
-looses = 0;
+        choix = "";
+        choixDuBot = "";
+        score.win = 0
+        score.looses = 0
 
-        document.querySelector('span').innerHTML = `score : ${score} looses : ${looses}`
+        localStorage.removeItem('score');
+
+        document.querySelector('span').innerHTML = `score : ${score.win} looses : ${score.looses}`
 }
 
 function conditions() {
@@ -33,33 +37,33 @@ function conditions() {
     choixDuBot = choixRandom ()
     if(choix === "Papier" && choixDuBot === "Pierre" || choix === "Ciseaux" && choixDuBot === "Papier" || choix === "Pierre" && choixDuBot === "Ciseaux"   ) {
     
-        score ++
+        score.win = score.win + 1
         
-        document.querySelector('span').innerHTML = `score : ${score} looses : ${looses}`
-        chances = score + looses
+        document.querySelector('span').innerHTML = `score : ${score.win} looses : ${score.looses}`
+        score.chances = score.win + score.looses
 
         console.log(`${choix} VS ${choixDuBot}`);
         
         
     
     }else if (choix === "Pierre" && choixDuBot === "Papier" || choix === "Papier" && choixDuBot === "Ciseaux" || choix === "Ciseaux" && choixDuBot === "Pierre" ){
-        looses ++
-        document.querySelector('span').innerHTML = `score : ${score} looses : ${looses}`
-        chances = score + looses
+        score.looses = score.looses +1
+        document.querySelector('span').innerHTML = `score : ${score.win} looses : ${score.looses}`
+        score.chances = score.win + score.looses
         
     }else {
         alert(`${choix} VS ${choixDuBot}`);
 
     }
 
-    if (chances === 3 && looses > score) {
+    if (score.chances === 3 && score.looses > score.win) {
         alert('tu as perdu'); 
         reset()
-    }else if (chances === 3 && looses < score) {
+    }else if (score.chances === 3 && score.looses < score.win) {
         alert('tu as gagné !')
         reset()
     }
-    
+    localStorage.setItem("score", JSON.stringify(score));
     
 }
 
